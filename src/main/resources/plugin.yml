@@ -1,0 +1,18 @@
+name: Skirmish
+version: '1.0.0'
+main: app.vexoris.skirmish.SkirmishPlugin
+api-version: '1.21'
+author: Vexoris
+description: An escape tool and a combat lock, for servers where loot can be taken.
+commands:
+  skirmish:
+    description: Give a Blink Feather, or reload the config.
+    usage: /skirmish give [player] | /skirmish reload
+    permission: skirmish.admin
+permissions:
+  skirmish.admin:
+    description: Give feathers and reload the config.
+    default: op
+  skirmish.bypass:
+    description: Teleport freely while in combat.
+    default: false

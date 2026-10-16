@@ -1,0 +1,36 @@
+# Skirmish
+#
+# Two mechanics that only make sense together: a bounded escape tool, and a lock that stops
+# you leaving a fight by any other means. A combat lock on its own is a punishment; an escape
+# tool on its own is a way never to be caught. Together they say you may not LEAVE a fight,
+# but you may always try to survive one.
+
+blink:
+  # How far a blink reaches along your line of sight, in blocks. Clamped 3..64 in code.
+  #
+  # PICK THIS AGAINST YOUR ARENAS, not against a feeling. The blink should cross most of a
+  # fighting space and never the whole of it: at 20 blocks in a 26-wide room, an escape moves
+  # you out of reach but still leaves your pursuer in the same fight. Set it wider than your
+  # arenas and the tool stops being a decision.
+  range: 20
+
+  # Cooldown in ticks (20 = one second). Floored at 20 in code, because a cooldown of zero is
+  # not "responsive" -- it is sustained flight at `range` blocks per tick.
+  cooldown-ticks: 100
+
+combat:
+  # How long a hit keeps you in combat. Clamped 3..120.
+  seconds: 15
+
+  # Whether being in combat refuses ender pearls, chorus fruit and teleport commands.
+  # Turning this off leaves the feather working and is a perfectly reasonable setup: you
+  # then have an escape tool and no lock.
+  block-teleports: true
+
+  # Whether MOBS put you in combat, or only players.
+  #
+  # OFF BY DEFAULT AND IT SHOULD USUALLY STAY OFF. On a server with hostile mobs everywhere,
+  # tagging on every zombie is an almost permanent combat lock -- a worse bug than the one it
+  # fixes. Turn it on deliberately if you run boss fights or raid events and you want players
+  # held in them.
+  mobs-tag-you: false
